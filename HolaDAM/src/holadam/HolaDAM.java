@@ -1,5 +1,7 @@
 package holadam;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class HolaDAM {
@@ -12,8 +14,15 @@ public class HolaDAM {
         System.out.print("Introduce tu edad: ");
         int edad = scanner.nextInt();
         
-        System.out.println("Hola " + nombre + "!");
-        System.out.println("Tienes " + edad + " años!");
+        System.out.print("Introduce tu fecha de nacimiento (dd/mm/aaaa): ");
+        LocalDate fechaNacimiento = LocalDate.parse(
+                scanner.next(),
+                DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        
+        System.out.printf("Hola %s!%n", nombre);
+        System.out.printf("Tienes %s años!%n", edad);
+        System.out.printf("Has nacido el %s%n", fechaNacimiento.format(
+                DateTimeFormatter.ofPattern("eeee, dd 'de' MMMM 'de' yyyy")));
     }
 }
  
